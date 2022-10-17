@@ -4,14 +4,15 @@
 
 int main()
 {
-    std::cout << "Enter m, n and o: ";
-    int m, n, o;
-    std::cin >> m >> n >> o;
+    std::cout << "Enter m, n, a and b: ";
+    int m, n, a, b;
+    std::cin >> m >> n >> a >> b;
     std::vector<std::vector<int>> mat1 = input_matrix(m, n);
-    std::vector<std::vector<int>> mat2 = input_matrix(n, o);
-    std::vector<std::vector<int>> res = multiply_matrix(m, n, o, mat1, mat2);
+    std::vector<std::vector<int>> mat2 = input_matrix(a, b);
+    std::vector<std::vector<int>> res = convolve(m, n, mat1, a, b, mat2);
     print_matrix(m, n, mat1);
-    print_matrix(m, n, mat2);
-    print_matrix(m, n, res);
+    // std::cout << trace(m, n, mat1) << "\n";
+    print_matrix(a, b, mat2);
+    print_matrix(2, 2, res);
     return 0;
 }
