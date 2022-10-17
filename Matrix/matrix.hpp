@@ -31,7 +31,7 @@ void print_matrix(int m, int n, std::vector<std::vector<int>> mat)
     {
         for (int j = 0; j < n; j++)
         {
-            std::cout << mat[i][j] << " ";
+            std::cout << mat[i][j] << "\t";
         }
         std::cout << '\n';
     }
@@ -57,4 +57,25 @@ std::vector<std::vector<int>> add_matrix(int m, int n, std::vector<std::vector<i
         mat.push_back(row);
     }
     return mat;
+}
+
+std::vector<std::vector<int>> multiply_matrix(int m, int n, int o, std::vector<std::vector<int>> mat1, std::vector<std::vector<int>> mat2)
+{
+    int val;
+    std::vector<std::vector<int>> res;
+    for (int i = 0; i < m; i++)
+    {
+        std::vector<int> row;
+        for (int j = 0; j < o; j++)
+        {
+            int val = 0;
+            for (int k = 0; k < n; k++)
+            {
+                val += mat1[i][k] * mat2[k][j];
+            }
+            row.push_back(val);
+        }
+        res.push_back(row);
+    }
+    return res;
 }
