@@ -7,13 +7,13 @@ void print_hello()
     std::cout << "Hello World!\n";
 }
 
-std::vector<std::vector<int>> input_matrix(int m, int n)
+std::vector<std::vector<float>> input_matrix(int m, int n)
 {
-    int val;
-    std::vector<std::vector<int>> mat;
+    float val;
+    std::vector<std::vector<float>> mat;
     for (int i = 0; i < m; i++)
     {
-        std::vector<int> row;
+        std::vector<float> row;
         for (int j = 0; j < n; j++)
         {
             std::cin >> val;
@@ -24,7 +24,7 @@ std::vector<std::vector<int>> input_matrix(int m, int n)
     return mat;
 }
 
-void print_matrix(int m, int n, std::vector<std::vector<int>> mat)
+void print_matrix(int m, int n, std::vector<std::vector<float>> mat)
 {
     std::cout << "\nPrinting Matrix -> \n";
     for (int i = 0; i < m; i++)
@@ -37,18 +37,18 @@ void print_matrix(int m, int n, std::vector<std::vector<int>> mat)
     }
 }
 
-int get_element_at_index(std::vector<std::vector<int>> mat, int row, int col)
+int get_element_at_index(std::vector<std::vector<float>> mat, int row, int col)
 {
     return mat[row - 1][col - 1];
 }
 
-std::vector<std::vector<int>> add_matrix(int m, int n, std::vector<std::vector<int>> mat1, std::vector<std::vector<int>> mat2)
+std::vector<std::vector<float>> add_matrix(int m, int n, std::vector<std::vector<float>> mat1, std::vector<std::vector<float>> mat2)
 {
-    int val;
-    std::vector<std::vector<int>> mat;
+    float val;
+    std::vector<std::vector<float>> mat;
     for (int i = 0; i < m; i++)
     {
-        std::vector<int> row;
+        std::vector<float> row;
         for (int j = 0; j < n; j++)
         {
             val = mat1[i][j] + mat2[i][j];
@@ -59,16 +59,16 @@ std::vector<std::vector<int>> add_matrix(int m, int n, std::vector<std::vector<i
     return mat;
 }
 
-std::vector<std::vector<int>> multiply_matrix(int m, int n, int o, std::vector<std::vector<int>> mat1, std::vector<std::vector<int>> mat2)
+std::vector<std::vector<float>> multiply_matrix(int m, int n, int o, std::vector<std::vector<float>> mat1, std::vector<std::vector<float>> mat2)
 {
-    int val;
-    std::vector<std::vector<int>> res;
+    float val;
+    std::vector<std::vector<float>> res;
     for (int i = 0; i < m; i++)
     {
-        std::vector<int> row;
+        std::vector<float> row;
         for (int j = 0; j < o; j++)
         {
-            int val = 0;
+            float val = 0;
             for (int k = 0; k < n; k++)
             {
                 val += mat1[i][k] * mat2[k][j];
@@ -80,12 +80,12 @@ std::vector<std::vector<int>> multiply_matrix(int m, int n, int o, std::vector<s
     return res;
 }
 
-std::vector<std::vector<int>> transpose(int m, int n, std::vector<std::vector<int>> mat)
+std::vector<std::vector<float>> transpose(int m, int n, std::vector<std::vector<float>> mat)
 {
-    std::vector<std::vector<int>> res;
+    std::vector<std::vector<float>> res;
     for (int i = 0; i < n; i++)
     {
-        std::vector<int> row;
+        std::vector<float> row;
         for (int j = 0; j < m; j++)
         {
             row.push_back(mat[j][i]);
@@ -95,7 +95,7 @@ std::vector<std::vector<int>> transpose(int m, int n, std::vector<std::vector<in
     return res;
 }
 
-int trace(int m, int n, std::vector<std::vector<int>> mat)
+int trace(int m, int n, std::vector<std::vector<float>> mat)
 {
     int trace = 0;
     if (m != n)
@@ -112,13 +112,13 @@ int trace(int m, int n, std::vector<std::vector<int>> mat)
     return trace;
 }
 
-std::vector<std::vector<int>> scalar_multiply(int m, int n, std::vector<std::vector<int>> mat, int scalar)
+std::vector<std::vector<float>> scalar_multiply(int m, int n, std::vector<std::vector<float>> mat, int scalar)
 {
-    int val;
-    std::vector<std::vector<int>> res;
+    float val;
+    std::vector<std::vector<float>> res;
     for (int i = 0; i < m; i++)
     {
-        std::vector<int> row;
+        std::vector<float> row;
         for (int j = 0; j < n; j++)
         {
             val = mat[i][j] * scalar;
@@ -129,13 +129,28 @@ std::vector<std::vector<int>> scalar_multiply(int m, int n, std::vector<std::vec
     return res;
 }
 
-std::vector<std::vector<int>> convolve(int m, int n, std::vector<std::vector<int>> base, int a, int b, std::vector<std::vector<int>> filter)
+int dot_product(int m, int n, std::vector<std::vector<float>> mat1, std::vector<std::vector<float>> mat2)
 {
-    int val;
-    std::vector<std::vector<int>> res;
+    float val = 0;
+    int temp;
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            temp = mat1[i][j] * mat2[i][j];
+            val += temp;
+        }
+    }
+    return val;
+}
+
+std::vector<std::vector<float>> convolve(int m, int n, std::vector<std::vector<float>> base, int a, int b, std::vector<std::vector<float>> filter)
+{
+    float val;
+    std::vector<std::vector<float>> res;
     for (int i = 0; i < m - a + 1; i++)
     {
-        std::vector<int> row;
+        std::vector<float> row;
         for (int j = 0; j < n - b + 1; j++)
         {
             val = 0;
