@@ -112,7 +112,7 @@ int trace(int m, int n, std::vector<std::vector<float>> mat)
     return trace;
 }
 
-std::vector<std::vector<float>> scalar_multiply(int m, int n, std::vector<std::vector<float>> mat, int scalar)
+std::vector<std::vector<float>> scalar_multiply(int m, int n, std::vector<std::vector<float>> mat, float scalar)
 {
     float val;
     std::vector<std::vector<float>> res;
